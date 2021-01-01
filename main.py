@@ -1,5 +1,8 @@
 from PIL import Image
+import re
+import requests
 import math
+from io import BytesIO
 
 print(r"""                                                                                   
                                                                                    
@@ -30,11 +33,15 @@ while True:
         output.seek(0)
         output.truncate()
 
-        try:
-            img = Image.open(command[1])
-        except FileNotFoundError:
-            print("File not found!")
-            continue
+        if re.match("^http(s)?://.*", command[1]):
+            response = requests.get(command[1])
+            img = Image.open(BytesIO(response.content))
+        else:
+            try:
+                img = Image.open(command[1])
+            except FileNotFoundError:
+                print("File not found")
+                continue
 
         img = img.convert('L')
 
