@@ -1,3 +1,5 @@
+# 0.7
+
 from PIL import Image
 import re
 import requests
@@ -45,7 +47,7 @@ while True:
 
         img = img.convert('L')
 
-        rep = "@%#*+=-:. "
+        rep = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
         sensitivity = 50 if len(command) == 2 else int(command[2])
         w, h = img.size
 
