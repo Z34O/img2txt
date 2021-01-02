@@ -46,7 +46,7 @@ while True:
         img = img.convert('L')
 
         rep = "@%#*+=-:. "
-        sensitivity = 50 if len(command) == 2 else command[2]
+        sensitivity = 50 if len(command) == 2 else int(command[2])
         w, h = img.size
 
         if w > 300 or h > 300:
@@ -88,6 +88,10 @@ while True:
         print("\nCommand list: ")
         print("* convert [file] - convert image to text")
         print("* exit - exit the application")
+
+    elif command[0] == "result":
+        res = open("output.txt", "r")
+        print(res.read())
 
     else:
         print("Unknown command")
