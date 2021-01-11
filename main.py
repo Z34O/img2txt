@@ -47,8 +47,8 @@ while True:
 
         img = img.convert('L')
 
-        rep = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "
-        sensitivity = 50 if len(command) == 2 else int(command[2])
+        rep = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,\"^`'. "[::-1]
+        sensitivity = len(rep) if len(command) == 2 else int(command[2])
         w, h = img.size
 
         if w > 300 or h > 300:
